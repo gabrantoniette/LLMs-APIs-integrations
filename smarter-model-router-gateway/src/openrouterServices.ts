@@ -12,9 +12,9 @@ export class OpenRouterService {
         this.config = configOverride ?? config
 
         this.client = new OpenRouter({
-            apiKey: config.apiKey,
-            httpReferer: config.httpReferer,
-            xTitle: config.xTitle,
+            apiKey: this.config.apiKey,
+            httpReferer: this.config.httpReferer,
+            xTitle: this.config.xTitle,
         })
 
     }
