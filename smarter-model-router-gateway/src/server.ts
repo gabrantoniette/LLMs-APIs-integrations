@@ -1,8 +1,9 @@
 import Fastify from "fastify"
+import { OpenRouterService } from "./openrouterServices.ts"
 
 
 
-export const createServer = ( ) => {
+export const createServer = ( routerService: OpenRouterService ) => {
     
     const app = Fastify({ logger: false })
     app.post('/chat', {
@@ -11,7 +12,7 @@ export const createServer = ( ) => {
                 type: 'object',
                 required: ['question'],
                 properties: {
-                    question: { type: 'string', minLength: 1 } 
+                    question: { type: 'string', minLength: 5 } 
                 }
             }
         }
@@ -19,7 +20,9 @@ export const createServer = ( ) => {
     async ( request, reply ) => {
         try {
             const { question } = request.body as { question: string }
-            return reply.send('hello world')
+            const response = await routerService.generate(question)
+            return reply.send(response)
+
         } catch (error) {
             request.log.error( error, 'Handling error chat' )
             return reply.code(500).send({ error: 'Internal server error' })
