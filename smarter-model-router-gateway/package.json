@@ -1,0 +1,40 @@
+{
+  "name": "smarter-model-router-gateway",
+  "version": "1.0.0",
+  "description": "Fastify gateway that routes chat requests across multiple LLMs through OpenRouter, with fallback and provider sorting (price, latency, throughput).",
+  "scripts": {
+    "dev": "node --env-file .env --inspect --watch src/index.ts",
+    "test: dev": "node --env-file .env --inspect --watch --test ./test",
+    "test": "node --env-file .env  --test ./test",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "llm",
+    "openrouter",
+    "fastify",
+    "gateway",
+    "model-router",
+    "typescript",
+    "nodejs"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@openrouter/sdk": "^0.5.1",
+    "@types/node": "^24.19.2",
+    "fastify": "^5.7.4"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "license": "MIT",
+  "author": "Gabriel Antoniette",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrantoniette/LLMs-APIs-integrations.git",
+    "directory": "smarter-model-router-gateway"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "private": true
+}
